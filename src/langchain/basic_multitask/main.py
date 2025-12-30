@@ -29,7 +29,8 @@ agent = create_agent(
                   "If you don't know something, try to get the missing information with your tools."
                   "Attempt multiple tools and parameters if you can't find something."
                   "If you are sure the necessary data is not available, ask the user for more information."
-                  "Decompose the tasks it into smaller steps first, thn process the steps and the present your final answer to the user."
+                  "Decompose the tasks it into smaller steps first, thn process the steps and the present your final answer to the user.",
+    debug=True
 )
 
 messages: List[AIMessage] = agent.invoke({
