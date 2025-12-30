@@ -12,10 +12,10 @@ def prompt_with_context(request: ModelRequest) -> str:
     docs_content = "\n\n".join(doc.page_content for doc in retrieved_docs)
 
     system_message = (
-        "The following context is might be useful for your response."
+        "The following context is possibly relevant to you:\n."
         f"\n\n{docs_content}"
     )
 
-    print(system_message)
+    print("RAG:", system_message)
 
     return system_message

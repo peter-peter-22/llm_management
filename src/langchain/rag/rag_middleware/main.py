@@ -2,7 +2,7 @@ from langchain.agents import create_agent
 from langchain_core.messages import HumanMessage, AIMessage
 
 from src.langchain.langchain_client import *
-from src.langchain.rag.middleware import prompt_with_context
+from src.langchain.rag.rag_middleware.middleware import prompt_with_context
 
 agent = create_agent(
     llm,

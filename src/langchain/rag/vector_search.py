@@ -16,6 +16,12 @@ documents = [
         page_content="Milk is white."),
     Document(
         page_content="Mister Anderson loves apples but dislikes milk."),
+    Document(
+        page_content="The position of John Doe is AI engineer."),
+    Document(
+        page_content="John Doe joined the company in 2022."),
+    Document(
+        page_content="The alternative name of Fakesoft is Mangosoft."),
 ]
 
 # Step 2: Split documents into chunks (same)
@@ -25,7 +31,9 @@ text_splitter = RecursiveCharacterTextSplitter(
 )
 chunks = text_splitter.split_documents(documents)
 
-embeddings = OllamaEmbeddings(model="llama3.2:3b")  # Use a dedicated embedding model; assumes Ollama is running
+embeddings = OllamaEmbeddings(
+    model="mxbai-embed-large:335m")  # Use a dedicated embedding model; assumes Ollama is running
 vector_store = FAISS.from_documents(chunks, embeddings)
 
-# print(vector_store.similarity_search("Who is John Doe?", 3))
+# print(vector_store.similarity_search("Who is John Doe?", 2))
+# print(vector_store.similarity_search("John Doe work location", 2))
