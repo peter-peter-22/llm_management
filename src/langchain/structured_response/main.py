@@ -1,7 +1,7 @@
 from langchain.agents import create_agent
 from pydantic import BaseModel, Field
 
-from src.langchain.langchain_client import llm
+from src.langchain.langchain_client import simple_llm
 
 
 class ContactInfo(BaseModel):
@@ -12,7 +12,7 @@ class ContactInfo(BaseModel):
 
 
 agent = create_agent(
-    model=llm,
+    model=simple_llm,
     response_format=ContactInfo  # Auto-selects ProviderStrategy
 )
 
