@@ -45,3 +45,8 @@ print(routed_query("Tell me the main point of the following text, only a few wor
                    "We use cars today to travel and to transport heavy weights."
                    "The cars replaced horses because they don't eat."
                    "We use cars today to travel and to transport heavy weights."))
+
+print(routed_query(
+    "Extract the name of the mentioned product or service from the following text, respond only with the name (if any):"
+    "I recently used the AI-image-generator-321 website, it is awesome, it can generate images from text."
+    "I used it to make a car that has feet instead of wheels."))
