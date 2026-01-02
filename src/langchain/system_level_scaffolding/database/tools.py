@@ -12,14 +12,14 @@ type SortDirection = Literal["ascending", "descending"]
 
 
 class GetProjectsInput(BaseModel):
-    count: int = Field(description="Number of projects to return.", default=5)
-    sort: SortBy = Field(description="Ordering method.", default="created_at")
+    count: int = Field(description="Maximum count of projects to return", default=5)
+    sort: SortBy = Field(description="Field to order by", default="created_at")
     sort_direction: SortDirection = Field(description="Ordering direction.", default="descending")
 
 
 @tool(args_schema=GetProjectsInput, response_format="content_and_artifact")
 def get_projects(count: int, sort: SortBy, sort_direction: SortDirection):
-    """Retrieve the projects from the database with adjustable sorting."""
+    """Retrieve projects from the database with adjustable sorting and maximum count"""
     cursor = conn.cursor()
     cursor.execute("""SELECT *
                       FROM projects
