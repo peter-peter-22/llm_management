@@ -9,4 +9,5 @@ client = OpenAI(
 # Select mode
 model_args = {
     "model": "llama3.2:3b",
+    "temperature": 0
 }
