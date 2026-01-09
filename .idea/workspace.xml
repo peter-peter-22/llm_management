@@ -4,20 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18596abc-cc85-4de1-8aef-7f50abeec6b5" name="Changes" comment="tune decomposer">
-      <change afterPath="$PROJECT_DIR$/src/langchain/system_level_scaffolding/json_test.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/litellm/basic/basic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/litellm/common.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/litellm/tools/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/litellm/tools/test_tools.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/litellm/tools/tool_handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/openai/instructor_structured_response/main.py" afterDir="false" />
+    <list default="true" id="18596abc-cc85-4de1-8aef-7f50abeec6b5" name="Changes" comment="progress">
+      <change afterPath="$PROJECT_DIR$/src/interface/basic/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface/clients/llm_handler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface/clients/ollama_qwen_llm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface/tools/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface/tools/test_tools.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface/tools/tool_handler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ollama/basic/basic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ollama/tools/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/langchain/langchain_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/langchain/langchain_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/langchain/system_level_scaffolding/decomposer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/langchain/system_level_scaffolding/decomposer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/langchain/system_level_scaffolding/executor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/openai/openai_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/openai/openai_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/langchain/create_agent/decomposer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/langchain/create_agent/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +74,9 @@
     "Python.database.executor": "Run",
     "Python.decomposer.executor": "Run",
     "Python.executor.executor": "Run",
-    "Python.main.executor": "Debug",
+    "Python.main.executor": "Run",
     "Python.middleware.executor": "Run",
+    "Python.ollama_qwen_llm.executor": "Debug",
     "Python.openai_client.executor": "Run",
     "Python.router.executor": "Debug",
     "Python.test.executor": "Run",
@@ -95,7 +94,7 @@
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "master",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/peter/PycharmProjects/PythonProject/src/openai",
+    "last_opened_file_path": "/home/peter/PycharmProjects/PythonProject/src/interface",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -113,16 +112,17 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/interface" />
       <recent name="$PROJECT_DIR$/src/openai" />
       <recent name="$PROJECT_DIR$/src/langchain/basic_multitask" />
       <recent name="$PROJECT_DIR$/src/langchain/rag_tool" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/ollama" />
       <recent name="$PROJECT_DIR$/src/litellm" />
       <recent name="$PROJECT_DIR$/src/litellm/tools" />
       <recent name="$PROJECT_DIR$/src/litellm/basic" />
       <recent name="$PROJECT_DIR$/src/openai/structured_response" />
-      <recent name="$PROJECT_DIR$/src/langchain/system_level_scaffolding/database" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -165,7 +165,10 @@
       <workItem from="1767721073103" duration="4339000" />
       <workItem from="1767731795062" duration="3487000" />
       <workItem from="1767736155811" duration="5689000" />
-      <workItem from="1767741911110" duration="7340000" />
+      <workItem from="1767741911110" duration="7355000" />
+      <workItem from="1767894013350" duration="4536000" />
+      <workItem from="1767899034425" duration="4392000" />
+      <workItem from="1767909386156" duration="7664000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -255,7 +258,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767332053909</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="progress">
+      <option name="closed" value="true" />
+      <created>1767751272616</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1767751272616</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,7 +294,8 @@
     <MESSAGE value="minor experiments" />
     <MESSAGE value="decomposer WIP" />
     <MESSAGE value="tune decomposer" />
-    <option name="LAST_COMMIT_MESSAGE" value="tune decomposer" />
+    <MESSAGE value="progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="progress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -301,15 +313,16 @@
     <SUITE FILE_PATH="coverage/llm_management$vector_search.coverage" NAME="vector_search Coverage Results" MODIFIED="1767110318702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/rag" />
     <SUITE FILE_PATH="coverage/llm_management$router.coverage" NAME="router Coverage Results" MODIFIED="1767204128092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/routing" />
     <SUITE FILE_PATH="coverage/llm_management$openai_client.coverage" NAME="openai_client Coverage Results" MODIFIED="1766966052862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/openai" />
+    <SUITE FILE_PATH="coverage/llm_management$ollama_qwen_llm.coverage" NAME="ollama_qwen_llm Coverage Results" MODIFIED="1767917205212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface/clients" />
     <SUITE FILE_PATH="coverage/llm_management$test.coverage" NAME="test Coverage Results" MODIFIED="1767225534481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/system_level_scaffolding" />
     <SUITE FILE_PATH="coverage/llm_management$decomposer.coverage" NAME="decomposer Coverage Results" MODIFIED="1767723945920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/system_level_scaffolding" />
     <SUITE FILE_PATH="coverage/llm_management$client.coverage" NAME="client Coverage Results" MODIFIED="1766961057887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/llm_management$executor.coverage" NAME="executor Coverage Results" MODIFIED="1767326797407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/system_level_scaffolding" />
     <SUITE FILE_PATH="coverage/llm_management$tool_handler.coverage" NAME="tool_handler Coverage Results" MODIFIED="1767751220662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/litellm/tools" />
     <SUITE FILE_PATH="coverage/llm_management$database.coverage" NAME="database Coverage Results" MODIFIED="1767228392423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/system_level_scaffolding" />
-    <SUITE FILE_PATH="coverage/llm_management$basic.coverage" NAME="basic Coverage Results" MODIFIED="1767743732786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/litellm/basic" />
+    <SUITE FILE_PATH="coverage/llm_management$basic.coverage" NAME="basic Coverage Results" MODIFIED="1767894392113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface/basic" />
     <SUITE FILE_PATH="coverage/llm_management$basic_chat.coverage" NAME="basic_chat Coverage Results" MODIFIED="1766967096918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain" />
     <SUITE FILE_PATH="coverage/llm_management$middleware.coverage" NAME="middleware Coverage Results" MODIFIED="1767070591091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/rag" />
-    <SUITE FILE_PATH="coverage/llm_management$main.coverage" NAME="main Coverage Results" MODIFIED="1767745875912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/litellm/tools" />
+    <SUITE FILE_PATH="coverage/llm_management$main.coverage" NAME="main Coverage Results" MODIFIED="1767917841787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface/tools" />
   </component>
 </project>
