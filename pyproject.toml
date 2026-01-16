@@ -5,12 +5,16 @@ description = "Add your description here"
 requires-python = ">=3.13"
 dependencies = [
     "faiss-cpu>=1.13.2",
+    "gradio==5.23.1",
+    "huggingface-hub>=1.2.4",
     "instructor>=1.13.0",
     "langchain>=1.2.0",
     "langchain-community>=0.4.1",
     "langchain-ollama>=1.0.1",
     "litellm>=1.80.11",
+    "modelscope-studio==1.1.7",
     "ollama>=0.6.1",
     "openai>=2.14.0",
     "pydantic>=2.12.5",
+    "qwen-agent[code-interpreter,gui,mcp,rag]>=0.0.5",
 ]
