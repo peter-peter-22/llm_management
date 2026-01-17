@@ -11,7 +11,7 @@ https://platform.openai.com/docs/guides/function-calling
 
 
 class GetWeather(BaseModel):
-    """Get the current weather in a location."""
+    """Get the current weather at a location."""
     location: str = Field(..., description="The city and state, e.g. San Francisco, CA")
     unit: str = Field("celsius", description="Temperature unit: celsius or fahrenheit")
 

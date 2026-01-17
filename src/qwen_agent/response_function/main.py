@@ -45,7 +45,7 @@ bot = Assistant(
     function_list=[ResponseFunction()]
 )
 
-messages = [{'role': 'user', 'content': "Tell me about Canada."}]
+messages = [{'role': 'user', 'content': "Tell me about Germany."}]
 responses = ''
 for responses in bot.run(messages=messages):
     pass

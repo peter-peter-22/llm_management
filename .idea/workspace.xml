@@ -4,27 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18596abc-cc85-4de1-8aef-7f50abeec6b5" name="Changes" comment="experiment">
-      <change afterPath="$PROJECT_DIR$/src/ollama/json_schema/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/basic/instant.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/basic/streaming.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/json/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/json_schema/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/rag/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/response_function/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/tools/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/ui/gui/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/ui/gui/assets/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/ui/gui/assets/appBot.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/ui/gui/assets/logo.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/ui/gui/assets/user.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/ui/gui/gradio_dep.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/ui/gui/gradio_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/ui/gui/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/ui/gui/web_ui.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qwen_agent/ui/main.py" afterDir="false" />
+    <list default="true" id="18596abc-cc85-4de1-8aef-7f50abeec6b5" name="Changes" comment="qwen-agent">
+      <change afterPath="$PROJECT_DIR$/src/interface2/basic/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface2/clients/llm_handler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface2/clients/ollama_qwen_llm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface2/tools/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface2/tools/test_tools.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface2/tools/tool_handler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface2/tools/tool_loop.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ollama/tools/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ollama/tools/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/qwen_agent/response_function/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/qwen_agent/response_function/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,61 +67,62 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.basic.executor&quot;: &quot;Run&quot;,
-    &quot;Python.basic_chat.executor&quot;: &quot;Run&quot;,
-    &quot;Python.client.executor&quot;: &quot;Run&quot;,
-    &quot;Python.database.executor&quot;: &quot;Run&quot;,
-    &quot;Python.decomposer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.executor.executor&quot;: &quot;Run&quot;,
-    &quot;Python.instant.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.middleware.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ollama_qwen_llm.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.openai_client.executor&quot;: &quot;Run&quot;,
-    &quot;Python.router.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.sync.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.tool.executor&quot;: &quot;Run&quot;,
-    &quot;Python.tool_handler.executor&quot;: &quot;Run&quot;,
-    &quot;Python.vector_search.executor&quot;: &quot;Run&quot;,
-    &quot;Python.web_ui.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Shell Script.test.sh.executor&quot;: &quot;Run&quot;,
-    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/peter/PycharmProjects/PythonProject/src/qwen-agent/ui&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.basic.executor": "Run",
+    "Python.basic_chat.executor": "Run",
+    "Python.client.executor": "Run",
+    "Python.database.executor": "Run",
+    "Python.decomposer.executor": "Run",
+    "Python.executor.executor": "Run",
+    "Python.instant.executor": "Run",
+    "Python.main.executor": "Debug",
+    "Python.middleware.executor": "Run",
+    "Python.ollama_qwen_llm.executor": "Debug",
+    "Python.openai_client.executor": "Run",
+    "Python.router.executor": "Debug",
+    "Python.sync.executor": "Run",
+    "Python.test.executor": "Run",
+    "Python.test_tools.executor": "Run",
+    "Python.tool.executor": "Run",
+    "Python.tool_handler.executor": "Run",
+    "Python.vector_search.executor": "Run",
+    "Python.web_ui.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Shell Script.test.sh.executor": "Run",
+    "ai.playground.ignore.import.keys.banner.in.settings": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/home/peter/PycharmProjects/PythonProject/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/qwen-agent/ui" />
       <recent name="$PROJECT_DIR$/src/interface" />
       <recent name="$PROJECT_DIR$/src/openai" />
       <recent name="$PROJECT_DIR$/src/langchain/basic_multitask" />
-      <recent name="$PROJECT_DIR$/src/langchain/rag_tool" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/ollama" />
@@ -189,7 +180,9 @@
       <workItem from="1768496072319" duration="3402000" />
       <workItem from="1768505136055" duration="5679000" />
       <workItem from="1768515160551" duration="2391000" />
-      <workItem from="1768558173821" duration="12580000" />
+      <workItem from="1768558173821" duration="21924000" />
+      <workItem from="1768593236168" duration="2819000" />
+      <workItem from="1768610167157" duration="7440000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -295,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767917906752</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="qwen-agent">
+      <option name="closed" value="true" />
+      <created>1768578606355</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1768578606355</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,7 +326,8 @@
     <MESSAGE value="tune decomposer" />
     <MESSAGE value="progress" />
     <MESSAGE value="experiment" />
-    <option name="LAST_COMMIT_MESSAGE" value="experiment" />
+    <MESSAGE value="qwen-agent" />
+    <option name="LAST_COMMIT_MESSAGE" value="qwen-agent" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -353,9 +355,10 @@
     <SUITE FILE_PATH="coverage/llm_management$tool_handler.coverage" NAME="tool_handler Coverage Results" MODIFIED="1767751220662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/litellm/tools" />
     <SUITE FILE_PATH="coverage/llm_management$database.coverage" NAME="database Coverage Results" MODIFIED="1767228392423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/system_level_scaffolding" />
     <SUITE FILE_PATH="coverage/llm_management$basic.coverage" NAME="basic Coverage Results" MODIFIED="1767894392113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface/basic" />
+    <SUITE FILE_PATH="coverage/llm_management$test_tools.coverage" NAME="test_tools Coverage Results" MODIFIED="1768614284078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/tools" />
     <SUITE FILE_PATH="coverage/llm_management$basic_chat.coverage" NAME="basic_chat Coverage Results" MODIFIED="1766967096918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain" />
     <SUITE FILE_PATH="coverage/llm_management$sync.coverage" NAME="sync Coverage Results" MODIFIED="1768487658589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/qwen-agent/basic" />
     <SUITE FILE_PATH="coverage/llm_management$middleware.coverage" NAME="middleware Coverage Results" MODIFIED="1767070591091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/rag" />
-    <SUITE FILE_PATH="coverage/llm_management$main.coverage" NAME="main Coverage Results" MODIFIED="1768578434582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/qwen_agent/response_function" />
+    <SUITE FILE_PATH="coverage/llm_management$main.coverage" NAME="main Coverage Results" MODIFIED="1768617896053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/tools" />
   </component>
 </project>
