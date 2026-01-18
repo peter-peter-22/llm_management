@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18596abc-cc85-4de1-8aef-7f50abeec6b5" name="Changes" comment="qwen-agent">
-      <change afterPath="$PROJECT_DIR$/src/interface2/basic/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interface2/clients/llm_handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interface2/clients/ollama_qwen_llm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interface2/tools/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interface2/tools/test_tools.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interface2/tools/tool_handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interface2/tools/tool_loop.py" afterDir="false" />
+    <list default="true" id="18596abc-cc85-4de1-8aef-7f50abeec6b5" name="Changes" comment="interface 2">
+      <change afterPath="$PROJECT_DIR$/src/interface2/formatted_response/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface2/tools/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ollama/tools/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ollama/tools/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/qwen_agent/response_function/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/qwen_agent/response_function/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface2/clients/llm_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/clients/llm_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface2/clients/ollama_qwen_llm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/clients/ollama_qwen_llm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface2/tools/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/tools/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface2/tools/test_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/tools/test_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface2/tools/tool_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/tools/tool_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface2/tools/tool_loop.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/tools/tool_loop.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +85,8 @@
     "Python.test.executor": "Run",
     "Python.test_tools.executor": "Run",
     "Python.tool.executor": "Run",
-    "Python.tool_handler.executor": "Run",
+    "Python.tool_handler.executor": "Debug",
+    "Python.tool_loop.executor": "Run",
     "Python.vector_search.executor": "Run",
     "Python.web_ui.executor": "Run",
     "RunOnceActivity.MCP Project settings loaded": "true",
@@ -182,7 +182,11 @@
       <workItem from="1768515160551" duration="2391000" />
       <workItem from="1768558173821" duration="21924000" />
       <workItem from="1768593236168" duration="2819000" />
-      <workItem from="1768610167157" duration="7440000" />
+      <workItem from="1768610167157" duration="7670000" />
+      <workItem from="1768662770547" duration="5500000" />
+      <workItem from="1768675913141" duration="135000" />
+      <workItem from="1768682157118" duration="9678000" />
+      <workItem from="1768695387291" duration="16130000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -296,7 +300,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768578606355</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="interface 2">
+      <option name="closed" value="true" />
+      <created>1768618158677</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1768618158677</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,7 +339,8 @@
     <MESSAGE value="progress" />
     <MESSAGE value="experiment" />
     <MESSAGE value="qwen-agent" />
-    <option name="LAST_COMMIT_MESSAGE" value="qwen-agent" />
+    <MESSAGE value="interface 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="interface 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -346,19 +359,20 @@
     <SUITE FILE_PATH="coverage/llm_management$router.coverage" NAME="router Coverage Results" MODIFIED="1767204128092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/routing" />
     <SUITE FILE_PATH="coverage/llm_management$openai_client.coverage" NAME="openai_client Coverage Results" MODIFIED="1766966052862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/openai" />
     <SUITE FILE_PATH="coverage/llm_management$ollama_qwen_llm.coverage" NAME="ollama_qwen_llm Coverage Results" MODIFIED="1767917205212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface/clients" />
+    <SUITE FILE_PATH="coverage/llm_management$tool_loop.coverage" NAME="tool_loop Coverage Results" MODIFIED="1768713322583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/tools" />
     <SUITE FILE_PATH="coverage/llm_management$web_ui.coverage" NAME="web_ui Coverage Results" MODIFIED="1768512002384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.venv/lib/python3.13/site-packages/qwen_agent/gui" />
-    <SUITE FILE_PATH="coverage/llm_management$test.coverage" NAME="test Coverage Results" MODIFIED="1767225534481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/system_level_scaffolding" />
+    <SUITE FILE_PATH="coverage/llm_management$test.coverage" NAME="test Coverage Results" MODIFIED="1768714635034" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/tools" />
     <SUITE FILE_PATH="coverage/llm_management$decomposer.coverage" NAME="decomposer Coverage Results" MODIFIED="1767723945920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/system_level_scaffolding" />
     <SUITE FILE_PATH="coverage/llm_management$instant.coverage" NAME="instant Coverage Results" MODIFIED="1768512427966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/qwen-agent/basic" />
     <SUITE FILE_PATH="coverage/llm_management$client.coverage" NAME="client Coverage Results" MODIFIED="1766961057887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/llm_management$executor.coverage" NAME="executor Coverage Results" MODIFIED="1767326797407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/system_level_scaffolding" />
-    <SUITE FILE_PATH="coverage/llm_management$tool_handler.coverage" NAME="tool_handler Coverage Results" MODIFIED="1767751220662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/litellm/tools" />
+    <SUITE FILE_PATH="coverage/llm_management$tool_handler.coverage" NAME="tool_handler Coverage Results" MODIFIED="1768714578732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/tools" />
     <SUITE FILE_PATH="coverage/llm_management$database.coverage" NAME="database Coverage Results" MODIFIED="1767228392423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/system_level_scaffolding" />
     <SUITE FILE_PATH="coverage/llm_management$basic.coverage" NAME="basic Coverage Results" MODIFIED="1767894392113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface/basic" />
-    <SUITE FILE_PATH="coverage/llm_management$test_tools.coverage" NAME="test_tools Coverage Results" MODIFIED="1768614284078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/tools" />
+    <SUITE FILE_PATH="coverage/llm_management$test_tools.coverage" NAME="test_tools Coverage Results" MODIFIED="1768686344447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/tools" />
     <SUITE FILE_PATH="coverage/llm_management$basic_chat.coverage" NAME="basic_chat Coverage Results" MODIFIED="1766967096918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain" />
     <SUITE FILE_PATH="coverage/llm_management$sync.coverage" NAME="sync Coverage Results" MODIFIED="1768487658589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/qwen-agent/basic" />
     <SUITE FILE_PATH="coverage/llm_management$middleware.coverage" NAME="middleware Coverage Results" MODIFIED="1767070591091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/rag" />
-    <SUITE FILE_PATH="coverage/llm_management$main.coverage" NAME="main Coverage Results" MODIFIED="1768617896053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/tools" />
+    <SUITE FILE_PATH="coverage/llm_management$main.coverage" NAME="main Coverage Results" MODIFIED="1768714753696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/tools" />
   </component>
 </project>

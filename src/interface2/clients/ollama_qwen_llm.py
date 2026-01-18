@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Callable
 
 import ollama
 
@@ -9,22 +9,26 @@ class OllamaQwen(LlmHandler):
     def __init__(
             self,
             model: str,
-            tools: list[dict[str, Any]] | None = None,
-            tool_choice: str | dict[str, Any] | None = None,
-            model_config: dict[str, Any] | None = None,
+            model_args: dict[str, Any] | None = None,
     ):
-        super().__init__(tools, tool_choice)
+        super().__init__(model_args)
         self.model = model
-        self.model_config = model_config
 
-    def chat(self, messages: list[dict[str, Any]], **kwargs) -> AiResponse:
+    def chat(
+            self,
+            messages: list[dict[str, Any]],
+            tools: list[Callable[..., Any]] | None = None,
+            tool_choice: str | dict[str, Any] | None = None,
+            **model_args
+    ) -> AiResponse:
         res = ollama.chat(
             model=self.model,
             messages=messages,
-            tools=self.tools,
+            tools=tools,
             options={
-                "tool_choice": self.tool_choice,
-                **self.model_config
+                "tool_choice": tool_choice,
+                **(self.model_args if self.model_args else {}),
+                **(model_args if model_args else {}),
             },
         )
 

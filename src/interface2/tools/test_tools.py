@@ -47,5 +47,5 @@ t = ToolRegistry([
 print("Normal", t.use_tool(tool_name, args_json))
 print("No args", t.use_tool(tool_name))
 print("Wrong tool", t.use_tool("test"))
-print("Wring args", t.use_tool(tool_name, '{"test": "Paris"}'))
+print("Wrong args", t.use_tool(tool_name, '{"test": "Paris"}'))  # The breaks are escaped, this might be an issue
 print("Invalid json", t.use_tool(tool_name, 'not a json'))
