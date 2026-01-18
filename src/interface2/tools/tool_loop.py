@@ -21,6 +21,7 @@ class ToolLoop(Generic[StructuredT]):
             max_steps: int = 5,
             model_args: dict[str, Any] | None = None,
             response_model: Type[StructuredT] | None = None,
+            tool_choice: str | dict[str, Any] | None = None,
     ):
         # Create the response tool for structured response if needed
         if response_model:
@@ -47,13 +48,22 @@ class ToolLoop(Generic[StructuredT]):
         self.response_model = response_model
         self.tool_registry = ToolRegistry(tools)
         self.tool_json = self.tool_registry.describe_tools() if self.tool_registry else None
+        self.tool_choice = tool_choice
 
     def loop(self, messages: list[dict[str, Any]]) -> AiResponse | AiResponse[StructuredT]:
         remaining_retries = self.retries
         remaining_steps = self.max_steps
         while remaining_retries >= 0 and remaining_steps >= 0:
-            res = self.model.chat(messages, tools=self.tool_json, **self.model_args if self.model_args else None)
+            res = self.model.chat(
+                messages,
+                tools=self.tool_json,
+                tool_choice=self.tool_choice,
+                model_args=self.model_args
+            )
             if res.is_tool_call:
+                remaining_steps -= 1
+
+                # Process tool calls
                 print(f"Executing {len(res.tool_calls)} tool call(s).")
                 for tool_call in res.tool_calls:
                     # Call the tool
@@ -76,8 +86,8 @@ class ToolLoop(Generic[StructuredT]):
                         messages.append(format_error_response(tool_call.function_name, content))
                         remaining_retries -= 1
 
-                    remaining_steps -= 1
             else:
-                if self.response_model:  raise Exception("Got text instead of response tool call")
+                if self.response_model:
+                    raise Exception("Got text instead of response tool call:", res.content)
                 return res
         raise Exception("No more retries left") if remaining_retries < 0 else Exception("Step limit exceeded")

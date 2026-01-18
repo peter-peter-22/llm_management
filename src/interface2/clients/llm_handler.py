@@ -44,6 +44,6 @@ class LlmHandler:
             messages: list[dict[str, Any]],
             tools: list[Callable[..., Any]] | None = None,
             tool_choice: str | dict[str, Any] | None = None,
-            **model_args
+            model_args: dict[str, Any] | None = None,
     ) -> AiResponse:
         pass

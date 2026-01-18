@@ -2,7 +2,7 @@ from typing import Literal
 
 from pydantic import Field, BaseModel, validate_call
 
-from src.interface2.clients.ollama_qwen_llm import OllamaQwen
+from src.interface2.clients.ollama_qwen_llm import OllamaModel
 from src.interface2.tools.tool_handler import Tool
 from src.interface2.tools.tool_loop import ToolLoop
 
@@ -26,7 +26,7 @@ tools = [
     )
 ]
 
-llm = OllamaQwen(model="qwen2.5:3b", model_args={"temperature": 0})
+llm = OllamaModel(model="qwen2.5:3b", model_args={"temperature": 0})
 
 messages = [
     {"role": "system", "content": "You are a helpful assistant. Do no make-up data, use tools when necessary."},

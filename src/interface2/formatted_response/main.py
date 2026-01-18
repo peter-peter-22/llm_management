@@ -2,7 +2,7 @@ from typing import Literal
 
 from pydantic import Field, BaseModel
 
-from src.interface2.clients.ollama_qwen_llm import OllamaQwen
+from src.interface2.clients.ollama_qwen_llm import OllamaModel
 from src.interface2.tools.tool_loop import ToolLoop
 
 
@@ -14,7 +14,7 @@ class Car(BaseModel):
     color: str = Field(description="The color of the car. example: 'red'", default="unknown")
 
 
-llm = OllamaQwen(model="qwen2.5:3b", model_args={"temperature": 0})
+llm = OllamaModel(model="qwen2.5:3b", model_args={"temperature": 0})
 
 messages = [
     {"role": "system", "content": "Extract data from the user message by using the response tool."},

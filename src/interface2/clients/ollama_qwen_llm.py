@@ -5,7 +5,7 @@ import ollama
 from src.interface2.clients.llm_handler import LlmHandler, AiResponse, ToolCall
 
 
-class OllamaQwen(LlmHandler):
+class OllamaModel(LlmHandler):
     def __init__(
             self,
             model: str,
@@ -19,7 +19,7 @@ class OllamaQwen(LlmHandler):
             messages: list[dict[str, Any]],
             tools: list[Callable[..., Any]] | None = None,
             tool_choice: str | dict[str, Any] | None = None,
-            **model_args
+            model_args: dict[str, Any] | None = None,
     ) -> AiResponse:
         res = ollama.chat(
             model=self.model,
