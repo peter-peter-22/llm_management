@@ -18,6 +18,17 @@ Rules:
 """
 
 
+def plan_fix(failed: str, user_input: str, error_message: str):
+    messages = [
+        {"role": "system", "content": planner_system_prompt},
+        {"role": "user", "content": user_input},
+        {"role": "user", "content": failed},
+        {"role": "user", "content": error_message}
+    ]
+    plan_semantic = llm.chat(messages)
+    return plan_semantic
+
+
 def plan_text(message: str):
     messages = [
         {"role": "system", "content": planner_system_prompt},
