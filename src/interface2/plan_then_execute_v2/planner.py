@@ -1,72 +1,82 @@
+from typing import Literal
+
+from pydantic import BaseModel, Field
+
 from src.interface2.clients.ollama_qwen_llm import OllamaModel
+from src.interface2.tools.tool_loop import ToolLoop
 
-llm = OllamaModel(model="qwen2.5:7b-instruct", model_args={"temperature": 0, "top_p": 0.9, "top_k": 40})
+llm = OllamaModel(
+    model="qwen2.5:7b-instruct",
+    model_args={
+        "temperature": 0,
+        "top_p": 0.9,
+        "top_k": 40
+        # "response_format": {"type": "json_object"}
+    }
+)
 
-planner_system_prompt = """You are a planner agent at a tech company 'Fakesoft'.
-You must create a plan to complete the user prompt into executable steps.
+planner_system_prompt = """
+You are a planner.
+Output a JSON plan using the response tool.
+Use only known capabilities and business concepts.
+Do not invent schema or SQL.
+If an input is unknown, use "__UNKNOWN__".
+Reference step outputs symbolically.
 
 
-The executing agents can use the following tools:
+AVAILABLE CAPABILITIES
 
-Action: query_projects
+[DB_SCHEMA]
 Inputs:
-- sort_by: field
-- limit: integer
+- scope: projects | employees
 Outputs:
-- projects: list of {
-    name: string
-    description: string (unbounded length)
-    created_at: timestamp
-}
+- entity_fields
 Guarantees:
-- Descriptions are raw and unsummarized
+- Complete and current
 
-Action: summarize_text
+[DB_QUERY]
 Inputs:
-- text: string
-- max_length: integer
+- sql
 Outputs:
-- summary: string
+- rows
 Guarantees:
-- Summary preserves factual content
+- Text fields are RAW
 
-Action: query_users
+[SUMMARIZE]
 Inputs:
-- user_name: string
+- text, max_length
 Outputs:
-- projects: list of {
-    user_name: string
-    full_name: string
-    email: string
-    position: string
-}
-Guarantees:
-- All users are employees
-
-
-Rules:
--Only respond with a list of execution steps.
--Do not assume or execute anything.
+- summary
 """
 
 
-def plan_text(message: str):
+class Step(BaseModel):
+    id: int
+    capability: Literal["DB_SCHEMA", "DB_QUERY", "SUMMARIZE"]
+    inputs: dict[str, str] = Field(
+        description="Include the inputs of the capability here. To reference outputs of a step, use:'<step_id>.<output_field>'")
+    status: Literal["pending", "blocked"] = Field(description="Blocked if depends on still unknown data")
+
+
+class Plan(BaseModel):
+    steps: list[Step]
+
+
+agent = ToolLoop[Plan](llm, response_model=Plan, tool_choice="required")
+
+
+def create_plan(message: str):
     messages = [
         {"role": "system", "content": planner_system_prompt},
         {"role": "user", "content": message}
     ]
-    plan_semantic = llm.chat(messages)
-    print(plan_semantic.content)
-
-    messages.append(plan_semantic.message)
-    messages.append({"role": "user", "content": "Does the created plan fulfill all requirements of the goal?"})
-    verify = llm.chat(messages)
-    print(verify.content)
-    return plan_semantic
+    plan = agent.loop(messages).structured_response
+    return plan
 
 
 def _test():
-    res = plan_text("List the 3 most recent projects of the company, briefly describe their goal.")
+    res = create_plan("List the 3 most recent projects of the company, briefly describe their goal.")
+    print(res)
 
 
 if __name__ == "__main__":

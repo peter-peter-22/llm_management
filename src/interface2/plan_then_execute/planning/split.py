@@ -6,7 +6,7 @@ from src.interface2.tools.tool_loop import ToolLoop
 llm = OllamaModel(model="qwen2.5:3b", model_args={"temperature": 0})
 
 system_prompt = """You will be provided with a list of the steps of a plan.
-Use the response tool to format them."""
+Use the response tool to extract the steps."""
 
 
 class PlanSteps(BaseModel):
