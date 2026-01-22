@@ -1,3 +1,4 @@
+import json
 from typing import NamedTuple
 
 from src.interface2.plan_then_execute_v2.database.initialize import conn, initialize
@@ -43,20 +44,14 @@ def list_tables():
     return names
 
 
-def describe_table(table: Table):
-    table_text = "entity: " + table.name + "\nfields:\n"
-    table_text += "\n".join([
-        f"-{column.name}: {column.type}"
-        for column in table.columns
-    ])
-    return table_text
-
-
 def describe_schema(tables: list[Table]):
-    return "\n\n".join([
-        describe_table(table)
+    return {
+        table.name: {
+            column.name: column.type
+            for column in table.columns
+        }
         for table in tables
-    ])
+    }
 
 
 def get_and_describe_schema():
@@ -67,6 +62,20 @@ def get_and_describe_schema():
 
 if __name__ == '__main__':
     initialize()
-    text = get_and_describe_schema()
-    print(text)
+    j = get_and_describe_schema()
+    print(json.dumps(j, indent=2))
     conn.close()
+    """{
+  "projects": {
+    "id": "INTEGER",
+    "title": "TEXT",
+    "description": "TEXT",
+    "created_at": "TIMESTAMP"
+  },
+  "users": {
+    "id": "INTEGER",
+    "username": "TEXT",
+    "full_name": "TEXT",
+    "created_at": "TIMESTAMP"
+  }
+}"""

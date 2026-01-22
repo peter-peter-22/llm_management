@@ -16,5 +16,6 @@ def execute_plan(plan: Plan):
 
 
 if __name__ == '__main__':
-    example = Plan(steps=[Step(id=1, capability='DB_SCHEMA', inputs={'scope': 'projects'}, status='pending')])
+    "{'steps': [{'capability': 'DB_SCHEMA', 'id': 1, 'inputs': {'scope': 'projects'}, 'status': 'completed'}]}"
+    example = Plan(steps=[Step(id=1, capability='DB_SCHEMA', inputs={'scope': 'projects'}, status='completed')])
     execute_plan(example)

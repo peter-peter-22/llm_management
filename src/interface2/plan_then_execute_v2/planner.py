@@ -1,68 +1,71 @@
-from typing import Literal
+from src.interface2.plan_then_execute_v2.models import llm_deterministic
 
-from pydantic import BaseModel, Field
+llm = llm_deterministic
 
-from src.interface2.clients.ollama_qwen_llm import OllamaModel
-from src.interface2.tools.tool_loop import ToolLoop
-
-llm = OllamaModel(
-    model="qwen2.5:7b-instruct",
-    model_args={
-        "temperature": 0,
-        "top_p": 0.9,
-        "top_k": 40
-        # "response_format": {"type": "json_object"}
-    }
-)
-
-planner_system_prompt = """
-You are a planner.
-Output a JSON plan using the response tool.
-Use only known capabilities and business concepts.
-Do not invent schema or SQL.
-If an input is unknown, use "__UNKNOWN__".
-Reference step outputs symbolically.
-
-
-AVAILABLE CAPABILITIES
+planner_capabilities = """AVAILABLE CAPABILITIES
 
 [DB_SCHEMA]
 Inputs:
-- scope: projects | employees
+- scope: (projects | employees) REQUIRED.
 Outputs:
 - entity_fields
-Guarantees:
-- Complete and current
+Description:
+- Returns the schema of the tables in a scope.
 
 [DB_QUERY]
 Inputs:
 - sql
 Outputs:
 - rows
-Guarantees:
-- Text fields are RAW
+Description:
+- Text fields are raw.
 
 [SUMMARIZE]
 Inputs:
 - text, max_length
 Outputs:
 - summary
+Description:
+- Use symbolic reference for bulk summary: 2.rows[*].title"""
+
+plan_schema = """PLAN SCHEMA
+"steps": {
+    "items": {
+        "id": {"type":"string"},
+        "capability": {"type":"string"},
+        "inputs": {
+            "type": "object"
+            "description": "Use '__UNKNOWN__' for still unknown data. Use symbolic references for step outputs." 
+        },
+        "description": {"type":"string"},
+        "depends_on": {
+            "type": "array",
+            "items": "string",
+            "description": "Step id only."
+        }
+    },
+    "type": "array"
+}"""
+
+planner_rules = """Rules of step creation:
+- Use only known capabilities.
+- Do not guess schema or SQL.
+- If an input is unknown, use "__UNKNOWN__".
+- Reference step outputs symbolically: 1.table_schemas.projects."""
+
+planner_system_prompt = f"""
+You are a planner.
+Output a JSON plan by using the PLAN SCHEMA.
+
+
+{planner_rules}
+
+
+{plan_schema}
+
+
+{planner_capabilities}
 """
-
-
-class Step(BaseModel):
-    id: int
-    capability: Literal["DB_SCHEMA", "DB_QUERY", "SUMMARIZE"]
-    inputs: dict[str, str] = Field(
-        description="Include the inputs of the capability here. To reference outputs of a step, use:'<step_id>.<output_field>'")
-    status: Literal["pending", "blocked"] = Field(description="Blocked if depends on still unknown data")
-
-
-class Plan(BaseModel):
-    steps: list[Step]
-
-
-agent = ToolLoop[Plan](llm, response_model=Plan, tool_choice="required")
 
 
 def create_plan(message: str):
@@ -70,13 +73,47 @@ def create_plan(message: str):
         {"role": "system", "content": planner_system_prompt},
         {"role": "user", "content": message}
     ]
-    plan = agent.loop(messages).structured_response
+    plan = llm.chat(messages)
     return plan
 
 
 def _test():
     res = create_plan("List the 3 most recent projects of the company, briefly describe their goal.")
-    print(res)
+    print(res.content)
+    """```json
+{
+    "steps": [
+        {
+            "id": "1",
+            "capability": "DB_SCHEMA",
+            "inputs": {
+                "scope": "projects"
+            },
+            "description": "Get schema for projects table.",
+            "depends_on": []
+        },
+        {
+            "id": "2",
+            "capability": "DB_QUERY",
+            "inputs": {
+                "sql": "SELECT * FROM projects ORDER BY start_date DESC LIMIT 3;"
+            },
+            "description": "Retrieve the 3 most recent project records from the database.",
+            "depends_on": ["1"]
+        },
+        {
+            "id": "3",
+            "capability": "SUMMARIZE",
+            "inputs": {
+                "text": "2.rows[*].goal",
+                "max_length": 50
+            },
+            "description": "Summarize the goal of each project.",
+            "depends_on": ["2"]
+        }
+    ]
+}
+```"""
 
 
 if __name__ == "__main__":
