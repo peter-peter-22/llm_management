@@ -1,10 +1,10 @@
 from typing import Optional, Any
 
 from src.interface2.plan_then_execute_v2.capabilities import DbSchema, DbQuery, Summarize
+from src.interface2.plan_then_execute_v2.entites import CompletionStatus, ProcessedPlan, ProcessedStep, Capability, \
+    StepOutput
 from src.interface2.plan_then_execute_v2.extract_plan import extract_plan
 from src.interface2.plan_then_execute_v2.plan_manager import PlanManager
-from src.interface2.plan_then_execute_v2.types import CompletionStatus, ProcessedPlan, ProcessedStep, Capability, \
-    StepOutput
 
 
 class CapabilityHandler:
@@ -22,8 +22,8 @@ class CapabilityHandler:
             if not can_be_executed(step, plan):
                 continue
             output = self.execute_capability(step.capability, step.inputs)
-            print(output)
-            # handle output
+            print(f"Result of step {step.id}:", output)
+            step.outputs = output
 
 
 def can_be_executed(step: ProcessedStep, plan: ProcessedPlan):
@@ -82,3 +82,5 @@ if __name__ == '__main__':
         "SUMMARIZE": Summarize()
     })
     executor.execute_plan(plan_manager.plan)
+    print("Updated plan after execution:")
+    plan_manager.print_full_plan()

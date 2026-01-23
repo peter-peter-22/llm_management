@@ -3,12 +3,14 @@ from typing import Optional, Any
 
 from pydantic import BaseModel
 
+type StepId = int
+
 
 class Step(BaseModel):
-    id: int
+    id: StepId
     capability: str
     inputs: Optional[dict[str, Any]]
-    depends_on: Optional[list[int]]
+    depends_on: Optional[list[StepId]]
     description: Optional[str]
 
 
@@ -18,7 +20,7 @@ class Plan(BaseModel):
 
 class CompletionStatus(Enum):
     PENDING = 1
-    COMPLETED = 3
+    COMPLETED = 2
 
 
 class StepOutputField(BaseModel):
@@ -27,7 +29,7 @@ class StepOutputField(BaseModel):
 
 
 class StepOutput(BaseModel):
-    outputs: dict[str, StepOutputField]
+    values: dict[str, StepOutputField]
 
 
 class ProcessedStep(Step):
@@ -36,9 +38,20 @@ class ProcessedStep(Step):
 
 
 class ProcessedPlan(BaseModel):
-    steps: dict[int, ProcessedStep]
+    steps: dict[StepId, ProcessedStep]
 
 
 class Capability:
-    def execute(self, args: dict[str, Any] | None) -> StepOutput:
+    def execute(self, **kwargs: Any) -> StepOutput:
         pass
+
+
+def _test():
+    step = Step(id=1, capability='DB_SCHEMA', inputs={'scope': 'projects'}, depends_on=[],
+                description='Get schema for projects table.')
+    d = step.model_dump()
+    print(ProcessedStep.model_validate(d))
+
+
+if __name__ == '__main__':
+    _test()

@@ -1,7 +1,7 @@
 import json
 from typing import Callable
 
-from src.interface2.plan_then_execute_v2.types import Plan
+from src.interface2.plan_then_execute_v2.entites import Plan
 
 type TextExtractor = Callable[[str], str | None]
 

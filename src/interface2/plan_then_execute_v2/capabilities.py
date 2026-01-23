@@ -4,7 +4,7 @@ from pydantic import validate_call
 
 from src.interface2.plan_then_execute_v2.database.get_schema import describe_all_tables
 from src.interface2.plan_then_execute_v2.database.query import query_to_dicts
-from src.interface2.plan_then_execute_v2.types import StepOutput, StepOutputField, Capability
+from src.interface2.plan_then_execute_v2.entites import StepOutput, StepOutputField, Capability
 
 
 class DbQuery(Capability):
@@ -23,11 +23,12 @@ table_scopes = {
 
 
 class DbSchema(Capability):
-    def execute(self, query: str, parameters: Optional[tuple] = None):
+    def execute(self, scope: str):
         rows = describe_all_tables()
-        return StepOutput.model_construct(output={
+        res = StepOutput.model_construct(values={
             "rows": StepOutputField.model_construct(value=rows, display=False)
         })
+        return res
 
 
 class Summarize(Capability):
