@@ -31,8 +31,8 @@ class StepOutput(BaseModel):
 
 
 class ProcessedStep(Step):
-    outputs: Optional[dict[str, StepOutput]]
-    status: CompletionStatus
+    outputs: Optional[dict[str, StepOutput]] = None
+    status: CompletionStatus = CompletionStatus.PENDING
 
 
 class ProcessedPlan(BaseModel):

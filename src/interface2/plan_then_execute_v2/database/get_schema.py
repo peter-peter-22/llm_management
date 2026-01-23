@@ -45,7 +45,7 @@ def list_tables():
         return names
 
 
-def describe_schema(tables: list[Table]):
+def describe_table(tables: list[Table]):
     return {
         table.name: {
             column.name: column.type
@@ -55,14 +55,14 @@ def describe_schema(tables: list[Table]):
     }
 
 
-def get_and_describe_schema():
+def describe_all_tables():
     table_names = list_tables()
     tables = [get_schema(table_name) for table_name in table_names]
-    return describe_schema(tables)
+    return describe_table(tables)
 
 
 if __name__ == '__main__':
-    j = get_and_describe_schema()
+    j = describe_all_tables()
     print(json.dumps(j, indent=2))
     """{
   "projects": {

@@ -2,6 +2,7 @@ from typing import Optional, Any
 
 from src.interface2.plan_then_execute_v2.capabilities import DbSchema, DbQuery, Summarize
 from src.interface2.plan_then_execute_v2.extract_plan import extract_plan
+from src.interface2.plan_then_execute_v2.plan_manager import PlanManager
 from src.interface2.plan_then_execute_v2.types import CompletionStatus, ProcessedPlan, ProcessedStep, Capability, \
     StepOutput
 
@@ -21,6 +22,7 @@ class CapabilityHandler:
             if not can_be_executed(step, plan):
                 continue
             output = self.execute_capability(step.capability, step.inputs)
+            print(output)
             # handle output
 
 
@@ -73,9 +75,10 @@ if __name__ == '__main__':
         }
     ]"""
     e_plan = extract_plan(plan_text)
+    plan_manager = PlanManager(e_plan)
     executor = CapabilityHandler({
         "DB_SCHEMA": DbSchema(),
         "DB_QUERY": DbQuery(),
         "SUMMARIZE": Summarize()
     })
-    executor.execute_plan(e_plan)
+    executor.execute_plan(plan_manager.plan)
