@@ -1,21 +1,9 @@
 import json
-from typing import Callable, Optional, Any
+from typing import Callable
 
-from pydantic import BaseModel
+from src.interface2.plan_then_execute_v2.types import Plan
 
 type TextExtractor = Callable[[str], str | None]
-
-
-class Step(BaseModel):
-    id: int
-    capability: str
-    inputs: Optional[dict[str, Any]]
-    depends_on: Optional[list[str]]
-    description: Optional[str]
-
-
-class Plan(BaseModel):
-    steps: list[Step]
 
 
 def try_triple_quotation_mark(text: str):

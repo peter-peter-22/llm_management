@@ -1,7 +1,8 @@
 import json
+from contextlib import closing
 from typing import NamedTuple
 
-from src.interface2.plan_then_execute_v2.database.initialize import conn, initialize
+from src.interface2.plan_then_execute_v2.database.initialize import conn
 
 
 class Column(NamedTuple):
@@ -18,30 +19,30 @@ class Table(NamedTuple):
 
 
 def get_schema(table_name: str):
-    cursor = conn.cursor()
-    cursor.execute(f"PRAGMA table_info({table_name})")
-    columns_raw = cursor.fetchall()
-    cursor.close()
-    # for column in schema:
-    #     print(
-    #         f"Column: {column[1]}, Type: {column[2]}, Nullable: {column[3]}, Default: {column[4]}, Primary Key: {column[5]}")
-    columns_formatted: list[Column] = [Column(column[1], column[2], column[3], column[4], column[5]) for column in
-                                       columns_raw]
-    schema = Table(table_name, columns_formatted)
-    return schema
+    with closing(conn.cursor()) as cursor:
+        cursor.execute(f"PRAGMA table_info({table_name})")
+        columns_raw = cursor.fetchall()
+        cursor.close()
+        # for column in schema:
+        #     print(
+        #         f"Column: {column[1]}, Type: {column[2]}, Nullable: {column[3]}, Default: {column[4]}, Primary Key: {column[5]}")
+        columns_formatted: list[Column] = [Column(column[1], column[2], column[3], column[4], column[5]) for column
+                                           in
+                                           columns_raw]
+        schema = Table(table_name, columns_formatted)
+        return schema
 
 
 def list_tables():
-    cursor = conn.cursor()
-    cursor.execute("""
-                   SELECT name
-                   FROM sqlite_master
-                   WHERE type = 'table';
-                   """)
-    tables = cursor.fetchall()
-    names = list(filter(lambda t: t != 'sqlite_sequence', [table[0] for table in tables]))
-    cursor.close()
-    return names
+    with closing(conn.cursor()) as cursor:
+        cursor.execute("""
+                       SELECT name
+                       FROM sqlite_master
+                       WHERE type = 'table';
+                       """)
+        tables = cursor.fetchall()
+        names = list(filter(lambda t: t != 'sqlite_sequence', [table[0] for table in tables]))
+        return names
 
 
 def describe_schema(tables: list[Table]):
@@ -61,10 +62,8 @@ def get_and_describe_schema():
 
 
 if __name__ == '__main__':
-    initialize()
     j = get_and_describe_schema()
     print(json.dumps(j, indent=2))
-    conn.close()
     """{
   "projects": {
     "id": "INTEGER",

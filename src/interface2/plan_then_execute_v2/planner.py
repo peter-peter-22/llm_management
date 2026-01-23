@@ -40,8 +40,7 @@ plan_schema = """PLAN SCHEMA
         "description": {"type":"string"},
         "depends_on": {
             "type": "array",
-            "items": "string",
-            "description": "Step id only."
+            "items": "int"
         }
     },
     "type": "array"
