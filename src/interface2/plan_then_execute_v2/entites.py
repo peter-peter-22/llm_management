@@ -33,10 +33,10 @@ class StepOutputField(BaseModel):
 class StepOutput(BaseModel):
     values: dict[str, StepOutputField]
 
-    def to_dict_cleaned(self):
+    def to_dict_cleaned(self, hidden_text: str):
         """Cleaned dict for presenting the outputs for the re-planner."""
         return {
-            k: v.value if v.display else "..."
+            k: v.value if v.display else hidden_text
             for k, v in self.values.items()
         }
 
@@ -58,9 +58,10 @@ class ProcessedStep(Step):
             "capability": self.capability,
             "description": self.description,
             "include_in_final_answer": self.include_in_final_answer,
+            "inputs": self.inputs,
         }
-        if self.outputs:  d["output"] = self.outputs.to_dict_cleaned() if clean else self.outputs.to_dict()
-        if self.inputs:  d["inputs"] = self.inputs
+        if self.outputs:  d["output"] = self.outputs.to_dict_cleaned(
+            "@" + str(self.id)) if clean else self.outputs.to_dict()
         if self.depends_on:  d["depends_on"] = self.depends_on
         if self.status == CompletionStatus.COMPLETED: d["completed"] = True
         return d
@@ -85,6 +86,29 @@ class ProcessedPlan(BaseModel):
             if step.status != CompletionStatus.COMPLETED:
                 return False
         return True
+
+    def can_be_executed(self, step: ProcessedStep):
+        # Skip if completed
+        if step.status == CompletionStatus.COMPLETED:
+            return False
+        # Execute if no dependencies
+        if step.depends_on is None:
+            return True
+        # Skip if not all the dependencies are completed, otherwise execute
+        for dep_id in step.depends_on:
+            dep = self.steps.get(dep_id)
+            if dep is None:
+                raise ValueError(f"Step {step.id} depends on step {dep_id}, but no step has this id.")
+            if dep.status != CompletionStatus.COMPLETED:
+                return False
+        return True
+
+    def get_completed_steps(self):
+        s: list[int] = []
+        for step in self.steps.values():
+            if step.status == CompletionStatus.COMPLETED:
+                s.append(step.id)
+        return s
 
 
 class ExecutionContext:

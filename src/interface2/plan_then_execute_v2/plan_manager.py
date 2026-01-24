@@ -1,11 +1,11 @@
 from src.interface2.plan_then_execute_v2.entites import Plan, ProcessedPlan, ProcessedStep, CompletionStatus
 
 
-# Add a behavior
 class PlanManager:
     def __init__(self, initial_plan: Plan):
         steps = {step.id: ProcessedStep.model_validate(step.model_dump()) for step in initial_plan.steps}
         self.plan = ProcessedPlan(steps=steps)
+        self.clean_plan()
 
     # Does not check for plan resets
     def apply_replan(self, new_plan: Plan):
@@ -19,3 +19,10 @@ class PlanManager:
                 if old_step.status == CompletionStatus.COMPLETED:
                     continue
                 self.plan.steps[new_step.id] = ProcessedStep.model_validate(new_step.model_dump())
+        self.clean_plan()
+
+    def clean_plan(self):
+        """Clear hallucinated inputs"""
+        for step in self.plan.steps.values():
+            if not self.plan.can_be_executed(step) and step.status != CompletionStatus.COMPLETED:
+                step.inputs = {}

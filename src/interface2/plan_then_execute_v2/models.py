@@ -7,8 +7,8 @@ llm_deterministic = OllamaModel(
     model="qwen2.5:7b-instruct",
     # model="huihui_ai/nemotron-v1-abliterated:8b-llama-3.1-nano",
     model_args={
-        "temperature": 0.0,
-        "top_p": 0.3,
+        "temperature": 0.1,
+        "top_p": 0.5,
         "top_k": 40
     }
 )

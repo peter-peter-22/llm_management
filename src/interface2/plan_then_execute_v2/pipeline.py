@@ -1,6 +1,6 @@
 from src.interface2.plan_then_execute_v2.capabilities import DbSchema, DbQuery, Summarize
 from src.interface2.plan_then_execute_v2.entites import ProcessedPlan
-from src.interface2.plan_then_execute_v2.executor import CapabilityHandler
+from src.interface2.plan_then_execute_v2.execution import CapabilityHandler
 from src.interface2.plan_then_execute_v2.extract_plan import extract_plan
 from src.interface2.plan_then_execute_v2.final_answer import final_answer
 from src.interface2.plan_then_execute_v2.plan_manager import PlanManager
@@ -10,20 +10,46 @@ from src.interface2.plan_then_execute_v2.re_planner import re_plan
 
 # Restarts and some error handlers are missing
 def plan_then_execute(user_prompt: str):
+    retries = 3
     executor = CapabilityHandler({
         "DB_SCHEMA": DbSchema(),
         "DB_QUERY": DbQuery(),
         "SUMMARIZE": Summarize()
     })
-    manager = PlanManager(create_initial_plan(user_prompt))
+    manager = PlanManager(create_initial_plan(user_prompt, retries))
     print("Generated initial plan")
+
     while True:
-        completed = executor.execute_plan(manager.plan)
-        if manager.plan.check_completion():
-            break
+        print("Execution")
+        # Warning: When multiple steps are processed, the error might happen after one output was successfully written
+        try:
+            executor.execute_plan(manager.plan)
+            if manager.plan.check_completion():
+                break
+        except ValueError as e:
+            error = e.__str__()
+            print("Error while execution:\n", error)
+            for i in range(retries + 1):
+                print("Attempting fix")
+                new_plan = structured_re_plan(user_prompt, manager.plan, 3, error)
+                try:
+                    executor.execute_plan(manager.plan)
+                    print("Fix successful")
+                    manager.apply_replan(new_plan)
+                    error = None
+                    break
+                except ValueError as e:
+                    error = e.__str__()
+                    print("Error while fixing:\n", error)
+                    print(f"Trying again. Attempt {i + 1}/{retries}")
+                    continue
+            if error:
+                raise Exception("No more retries")
+
         print("Re-planning")
-        new_plan = structured_re_plan(user_prompt, manager.plan, completed)
+        new_plan = structured_re_plan(user_prompt, manager.plan, 3)
         manager.apply_replan(new_plan)
+
     print("Plan completed\n", manager.plan.to_json(False))
     """[
     {
@@ -104,16 +130,33 @@ def plan_then_execute(user_prompt: str):
     return final.content
 
 
-def structured_re_plan(goal: str, plan: ProcessedPlan, last_completed: list[int]):
-    res = re_plan(goal, plan.to_json(), last_completed)
-    plan = extract_plan(res.content)
-    return plan
+def structured_re_plan(goal: str, plan: ProcessedPlan, retries: int,
+                       error: str | None = None):
+    for i in range(retries + 1):
+        try:
+            next_steps: list[int] = []
+            for step in plan.steps.values():
+                if plan.can_be_executed(step):
+                    next_steps.append(step.id)
+            res = re_plan(goal, plan.to_json(), next_steps, error)
+            plan = extract_plan(res.content)
+            return plan
+        except ValueError as e:
+            print("Error while parsing plan:", e)
+            print(f"Trying again. Attempt {i + 1}/{retries}")
+    raise Exception("No more retries")
 
 
-def create_initial_plan(user_prompt: str):
-    res = create_plan(user_prompt)
-    plan = extract_plan(res.content)  # add error handling
-    return plan
+def create_initial_plan(user_prompt: str, retries: int):
+    for i in range(retries + 1):
+        try:
+            res = create_plan(user_prompt)
+            plan = extract_plan(res.content)  # add error handling
+            return plan
+        except ValueError as e:
+            print("Error while parsing plan:", e)
+            print(f"Trying again. Attempt {i + 1}/{retries}")
+    raise Exception("No more retries")
 
 
 def _test():

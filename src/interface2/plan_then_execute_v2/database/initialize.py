@@ -64,7 +64,7 @@ def projects_table():
             ),
             (
                 'Company messenger application',
-                "A website for internal discussions of the a company.",
+                "A website for internal discussions of the company.",
                 datetime(2022, 1, 1).timestamp()
             ),
             (

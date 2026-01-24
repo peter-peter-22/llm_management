@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18596abc-cc85-4de1-8aef-7f50abeec6b5" name="Changes" comment="wip">
-      <change afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/final_answer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/error_handling.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/symbolic_reference_old.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/capabilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/capabilities.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/database/get_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/database/get_schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/database/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/database/query.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/database/initialize.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/database/initialize.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/entites.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/entites.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/executor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/extract_plan.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/extract_plan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/execution.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/pipeline.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/plan_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/plan_manager.py" afterDir="false" />
@@ -81,6 +80,7 @@
     "Python.database.executor": "Run",
     "Python.decomposer.executor": "Run",
     "Python.entites.executor": "Run",
+    "Python.execution.executor": "Run",
     "Python.executor.executor": "Run",
     "Python.extract_plan.executor": "Run",
     "Python.final_answer.executor": "Run",
@@ -104,7 +104,7 @@
     "Python.semantic.executor": "Run",
     "Python.split.executor": "Run",
     "Python.structured.executor": "Run",
-    "Python.symbolic_reference.executor": "Run",
+    "Python.symbolic_reference.executor": "Debug",
     "Python.sync.executor": "Run",
     "Python.test.executor": "Debug",
     "Python.test_tools.executor": "Run",
@@ -247,7 +247,8 @@
       <workItem from="1769128738894" duration="2026000" />
       <workItem from="1769138637421" duration="3336000" />
       <workItem from="1769141985814" duration="14000" />
-      <workItem from="1769194577701" duration="44718000" />
+      <workItem from="1769194577701" duration="49000000" />
+      <workItem from="1769247626718" duration="12278000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -441,7 +442,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769141994265</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="wip">
+      <option name="closed" value="true" />
+      <created>1769243396837</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1769243396837</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -504,22 +513,23 @@
     <SUITE FILE_PATH="coverage/llm_management$requirements.coverage" NAME="requirements Coverage Results" MODIFIED="1768752059499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute" />
     <SUITE FILE_PATH="coverage/llm_management$decomposer.coverage" NAME="decomposer Coverage Results" MODIFIED="1767723945920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/system_level_scaffolding" />
     <SUITE FILE_PATH="coverage/llm_management$instant.coverage" NAME="instant Coverage Results" MODIFIED="1768512427966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/qwen-agent/basic" />
-    <SUITE FILE_PATH="coverage/llm_management$symbolic_reference.coverage" NAME="symbolic_reference Coverage Results" MODIFIED="1769225407111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
     <SUITE FILE_PATH="coverage/llm_management$extract_plan.coverage" NAME="extract_plan Coverage Results" MODIFIED="1769239307890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
-    <SUITE FILE_PATH="coverage/llm_management$pipeline.coverage" NAME="pipeline Coverage Results" MODIFIED="1769242907291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
+    <SUITE FILE_PATH="coverage/llm_management$symbolic_reference.coverage" NAME="symbolic_reference Coverage Results" MODIFIED="1769245710309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
+    <SUITE FILE_PATH="coverage/llm_management$pipeline.coverage" NAME="pipeline Coverage Results" MODIFIED="1769261752108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
     <SUITE FILE_PATH="coverage/llm_management$client.coverage" NAME="client Coverage Results" MODIFIED="1766961057887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/llm_management$tool_handler.coverage" NAME="tool_handler Coverage Results" MODIFIED="1768714578732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/tools" />
-    <SUITE FILE_PATH="coverage/llm_management$executor.coverage" NAME="executor Coverage Results" MODIFIED="1769226484282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
+    <SUITE FILE_PATH="coverage/llm_management$executor.coverage" NAME="executor Coverage Results" MODIFIED="1769245617519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
     <SUITE FILE_PATH="coverage/llm_management$database.coverage" NAME="database Coverage Results" MODIFIED="1767228392423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/system_level_scaffolding" />
     <SUITE FILE_PATH="coverage/llm_management$basic.coverage" NAME="basic Coverage Results" MODIFIED="1767894392113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface/basic" />
     <SUITE FILE_PATH="coverage/llm_management$verify.coverage" NAME="verify Coverage Results" MODIFIED="1768858524406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute/verified_plan" />
     <SUITE FILE_PATH="coverage/llm_management$get_schema.coverage" NAME="get_schema Coverage Results" MODIFIED="1769113003552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/database" />
-    <SUITE FILE_PATH="coverage/llm_management$re_planner.coverage" NAME="re_planner Coverage Results" MODIFIED="1769241707493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
+    <SUITE FILE_PATH="coverage/llm_management$re_planner.coverage" NAME="re_planner Coverage Results" MODIFIED="1769261532439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
     <SUITE FILE_PATH="coverage/llm_management$basic_chat.coverage" NAME="basic_chat Coverage Results" MODIFIED="1766967096918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain" />
     <SUITE FILE_PATH="coverage/llm_management$sync.coverage" NAME="sync Coverage Results" MODIFIED="1768487658589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/qwen-agent/basic" />
     <SUITE FILE_PATH="coverage/llm_management$entites.coverage" NAME="entites Coverage Results" MODIFIED="1769220627007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
+    <SUITE FILE_PATH="coverage/llm_management$execution.coverage" NAME="execution Coverage Results" MODIFIED="1769250811798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
     <SUITE FILE_PATH="coverage/llm_management$split.coverage" NAME="split Coverage Results" MODIFIED="1768768198150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute/planning" />
-    <SUITE FILE_PATH="coverage/llm_management$plan_manager.coverage" NAME="plan_manager Coverage Results" MODIFIED="1769140867084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
+    <SUITE FILE_PATH="coverage/llm_management$plan_manager.coverage" NAME="plan_manager Coverage Results" MODIFIED="1769247665200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
     <SUITE FILE_PATH="coverage/llm_management$router.coverage" NAME="router Coverage Results" MODIFIED="1767204128092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langchain/routing" />
     <SUITE FILE_PATH="coverage/llm_management$structured.coverage" NAME="structured Coverage Results" MODIFIED="1768761737724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute/planning" />
     <SUITE FILE_PATH="coverage/llm_management$ollama_qwen_llm.coverage" NAME="ollama_qwen_llm Coverage Results" MODIFIED="1767917205212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface/clients" />
@@ -528,7 +538,7 @@
     <SUITE FILE_PATH="coverage/llm_management$test.coverage" NAME="test Coverage Results" MODIFIED="1768861149538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute/repair_plan" />
     <SUITE FILE_PATH="coverage/llm_management$types.coverage" NAME="types Coverage Results" MODIFIED="1769140196199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
     <SUITE FILE_PATH="coverage/llm_management$patch.coverage" NAME="patch Coverage Results" MODIFIED="1768858295856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute/repair_plan" />
-    <SUITE FILE_PATH="coverage/llm_management$planner.coverage" NAME="planner Coverage Results" MODIFIED="1769240061344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
+    <SUITE FILE_PATH="coverage/llm_management$planner.coverage" NAME="planner Coverage Results" MODIFIED="1769246305913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
     <SUITE FILE_PATH="coverage/llm_management$capabilities.coverage" NAME="capabilities Coverage Results" MODIFIED="1769224412884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
     <SUITE FILE_PATH="coverage/llm_management$test_tools.coverage" NAME="test_tools Coverage Results" MODIFIED="1768686344447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/tools" />
     <SUITE FILE_PATH="coverage/llm_management$final_answer.coverage" NAME="final_answer Coverage Results" MODIFIED="1769234169668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />

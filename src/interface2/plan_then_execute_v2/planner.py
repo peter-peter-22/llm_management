@@ -39,8 +39,7 @@ plan_schema = """PLAN SCHEMA
             "type": "string"
         },
         "inputs": {
-            "type": "object"
-            "description": "Leave this empty for steps those depend on still incomplete steps. Use SYMBOLIC REFERENCE for step outputs." 
+            "type": "object" 
         },
         "description": {
             "type": "string"
@@ -61,8 +60,7 @@ planner_rules = """Rules of step creation:
 - Do not guess tables, SQL and outputs."""
 
 symbolic_reference = """SYMBOLIC REFERENCE usage: 
-- Use rows returned by the DB_QUERY capability as input by referring to the step id: $1
-- Use only a column from the rows as input: $1.title"""
+- Use rows returned by the DB_QUERY as input by referring to the step id and the selected column: '@1.column_name'"""
 
 planner_system_prompt = f"""
 You are a planner.
