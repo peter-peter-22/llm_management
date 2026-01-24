@@ -45,20 +45,28 @@ def list_tables():
         return names
 
 
-def describe_table(tables: list[Table]):
+def describe_table(table: Table):
     return {
-        table.name: {
-            column.name: column.type
-            for column in table.columns
-        }
-        for table in tables
+        column.name: column.type
+        for column in table.columns
+    }
+
+
+def get_and_describe_table(table_name: str):
+    table = get_schema(table_name)
+    return describe_table(table)
+
+
+def get_and_describe_tables(table_names: list[str]):
+    return {
+        table_name: get_and_describe_table(table_name)
+        for table_name in table_names
     }
 
 
 def describe_all_tables():
     table_names = list_tables()
-    tables = [get_schema(table_name) for table_name in table_names]
-    return describe_table(tables)
+    return get_and_describe_tables(table_names)
 
 
 if __name__ == '__main__':

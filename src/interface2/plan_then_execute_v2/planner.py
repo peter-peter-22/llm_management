@@ -22,25 +22,35 @@ Description:
 
 [SUMMARIZE]
 Inputs:
-- text, max_length
+- texts: symbolic reference 
+- max_length: int
 Outputs:
 - summary
 Description:
-- Use symbolic reference for bulk summary: 2.rows[*].title"""
+- Summarize an array of texts."""
 
 plan_schema = """PLAN SCHEMA
 "steps": {
     "items": {
-        "id": {"type":"string"},
-        "capability": {"type":"string"},
+        "id": {
+            "type": "int"
+        },
+        "capability": {
+            "type": "string"
+        },
         "inputs": {
             "type": "object"
-            "description": "Use '__UNKNOWN__' for still unknown data. Use symbolic references for step outputs." 
+            "description": "Leave this empty for steps those depend on still incomplete steps. Use SYMBOLIC REFERENCE for step outputs." 
         },
-        "description": {"type":"string"},
+        "description": {
+            "type": "string"
+        },
         "depends_on": {
             "type": "array",
             "items": "int"
+        },
+        "include_in_final_answer": {
+            "type": "bool"
         }
     },
     "type": "array"
@@ -48,9 +58,11 @@ plan_schema = """PLAN SCHEMA
 
 planner_rules = """Rules of step creation:
 - Use only known capabilities.
-- Do not guess schema or SQL.
-- If an input is unknown, use "__UNKNOWN__".
-- Reference step outputs symbolically: 1.table_schemas.projects."""
+- Do not guess tables, SQL and outputs."""
+
+symbolic_reference = """SYMBOLIC REFERENCE usage: 
+- Use rows returned by the DB_QUERY capability as input by referring to the step id: $1
+- Use only a column from the rows as input: $1.title"""
 
 planner_system_prompt = f"""
 You are a planner.

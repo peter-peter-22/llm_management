@@ -1,3 +1,4 @@
+import json
 from enum import Enum
 from typing import Optional, Any
 
@@ -10,8 +11,9 @@ class Step(BaseModel):
     id: StepId
     capability: str
     inputs: Optional[dict[str, Any]]
-    depends_on: Optional[list[StepId]]
-    description: Optional[str]
+    depends_on: Optional[list[StepId]] = None
+    description: Optional[str] = None
+    include_in_final_answer: bool = False
 
 
 class Plan(BaseModel):
@@ -31,26 +33,72 @@ class StepOutputField(BaseModel):
 class StepOutput(BaseModel):
     values: dict[str, StepOutputField]
 
+    def to_dict_cleaned(self):
+        """Cleaned dict for presenting the outputs for the re-planner."""
+        return {
+            k: v.value if v.display else "..."
+            for k, v in self.values.items()
+        }
+
+    def to_dict(self):
+        return {
+            k: v.value
+            for k, v in self.values.items()
+        }
+
 
 class ProcessedStep(Step):
-    outputs: Optional[dict[str, StepOutput]] = None
+    outputs: StepOutput | None = None
     status: CompletionStatus = CompletionStatus.PENDING
+
+    def to_dict(self, clean: bool = True) -> dict[str, Any]:
+        """Cleaned dict for presenting the step for the re-planner."""
+        d: dict[str, Any] = {
+            "id": self.id,
+            "capability": self.capability,
+            "description": self.description,
+            "include_in_final_answer": self.include_in_final_answer,
+        }
+        if self.outputs:  d["output"] = self.outputs.to_dict_cleaned() if clean else self.outputs.to_dict()
+        if self.inputs:  d["inputs"] = self.inputs
+        if self.depends_on:  d["depends_on"] = self.depends_on
+        if self.status == CompletionStatus.COMPLETED: d["completed"] = True
+        return d
 
 
 class ProcessedPlan(BaseModel):
     steps: dict[StepId, ProcessedStep]
 
+    def to_dict(self, clean: bool = True):
+        return [
+            v.to_dict(clean)
+            for k, v in self.steps.items()
+        ]
+
+    def to_json(self, clean: bool = True):
+        """Cleaned JSON for presenting the plan for the re-planner."""
+        return json.dumps(self.to_dict(clean), indent=4)
+
+    def check_completion(self):
+        """Return true if all steps are completed"""
+        for step in self.steps.values():
+            if step.status != CompletionStatus.COMPLETED:
+                return False
+        return True
+
+
+class ExecutionContext:
+    def __init__(self, plan: ProcessedPlan):
+        self.plan = plan
+
 
 class Capability:
-    def execute(self, **kwargs: Any) -> StepOutput:
+    def execute(self, ctx: ExecutionContext, **kwargs: Any) -> StepOutput:
         pass
 
 
 def _test():
-    step = Step(id=1, capability='DB_SCHEMA', inputs={'scope': 'projects'}, depends_on=[],
-                description='Get schema for projects table.')
-    d = step.model_dump()
-    print(ProcessedStep.model_validate(d))
+    pass
 
 
 if __name__ == '__main__':

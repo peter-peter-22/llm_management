@@ -46,9 +46,29 @@ def query_to_dicts(
         raise sqlite3.Error(f"Database error: {e}") from e
 
 
+def query_with_schema(
+        query: str,
+        parameters: Optional[tuple] = None
+):
+    """Return the schema description along with rows.
+    Warning:
+        -If 0 rows are returned, the schema description is None.
+        -The type of TIMESTAMP is int.
+        -The types will possibly over-simplify array and JSONB columns."""
+    rows = query_to_dicts(query, parameters)
+    if 0 == len(rows): return rows, None
+
+    schema: dict[str, str] = {
+        k: type(v).__name__
+        for k, v in rows[0].items()
+    }
+    return rows, schema
+
+
 def _test():
-    res = query_to_dicts("select * from projects")
-    print(res)
+    rows, schema = query_with_schema("select * from projects")
+    print("rows:", rows)
+    print("schema:", schema)
 
 
 if "__main__" == __name__:

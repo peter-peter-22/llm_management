@@ -48,9 +48,10 @@ def extract_json(text: str):
         if result is not None:
             try:
                 return json.loads(result)
-            except json.decoder.JSONDecodeError:
+            except json.decoder.JSONDecodeError as e:
+                print("Failed to decode the found json", e)
                 continue
-    raise ValueError("Could not extract json from text")
+    raise ValueError("Could not extract json from text:\n", text)
 
 
 def extract_plan(text: str):
@@ -112,6 +113,59 @@ In this updated plan:
 - Step 3 now uses `2.rows[*].description` to get the description of each project, which will be used for summarization."""
     res = extract_plan(example)
     print(res.model_dump_json(indent=2))
+
+    try:
+        bad_example = """{
+    "steps": [
+    {
+        "id": 1,
+        "capability": "DB_SCHEMA",
+        "description": "Get the schema for the projects table to understand its structure.",
+        "include_in_final_answer": false,
+        "output": {
+            "table_schemas": {
+                "projects": {
+                    "id": "INTEGER",
+                    "title": "TEXT",
+                    "description": "TEXT",
+                    "created_at": "TIMESTAMP"
+                }
+            }
+        },
+        "inputs": {
+            "scope": "projects"
+        }
+    },
+    {
+        "id": 2,
+        "capability": "DB_QUERY",
+        "description": "Retrieve the details of the three most recent projects.",
+        "include_in_final_answer": false,
+        "inputs": {
+            "sql": "SELECT * FROM projects ORDER BY start_date DESC LIMIT 3"
+        },
+        "depends_on": [
+            1
+        ]
+    },
+    {
+        "id": 3,
+        "capability": "SUMMARIZE",
+        "description": "Summarize the goals of the three most recent projects.",
+        "include_in_final_answer": true,
+        "inputs": {
+            "texts": "2.rows[*].goal",
+            "max_length": 50
+        },
+        "depends_on": [
+            2
+        ]
+    }
+]"""
+        res = extract_plan(bad_example)
+        print(res.model_dump_json(indent=2))
+    except ValueError as e:
+        print(e)
 
 
 if __name__ == "__main__":
