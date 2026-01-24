@@ -8,7 +8,7 @@ from src.interface2.plan_then_execute_v2.planner import create_plan
 from src.interface2.plan_then_execute_v2.re_planner import re_plan
 
 
-# Restarts and some error handlers are missing
+# Add CoT
 def plan_then_execute(user_prompt: str):
     retries = 3
     executor = CapabilityHandler({

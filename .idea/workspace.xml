@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18596abc-cc85-4de1-8aef-7f50abeec6b5" name="Changes" comment="wip">
-      <change afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/error_handling.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/output.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/symbolic_reference_old.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/database/initialize.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/database/initialize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/entites.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/entites.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/execution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/pipeline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/plan_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/plan_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/planner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/planner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/re_planner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/re_planner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/symbolic_reference.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface2/plan_then_execute_v2/symbolic_reference.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,79 +59,79 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.basic.executor": "Run",
-    "Python.basic_chat.executor": "Run",
-    "Python.capabilities.executor": "Run",
-    "Python.client.executor": "Run",
-    "Python.database.executor": "Run",
-    "Python.decomposer.executor": "Run",
-    "Python.entites.executor": "Run",
-    "Python.execution.executor": "Run",
-    "Python.executor.executor": "Run",
-    "Python.extract_plan.executor": "Run",
-    "Python.final_answer.executor": "Run",
-    "Python.get_schema.executor": "Run",
-    "Python.initialize.executor": "Debug",
-    "Python.instant.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.middleware.executor": "Run",
-    "Python.models.executor": "Debug",
-    "Python.ollama_gui.executor": "Run",
-    "Python.ollama_qwen_llm.executor": "Debug",
-    "Python.openai_client.executor": "Run",
-    "Python.patch.executor": "Run",
-    "Python.pipeline.executor": "Run",
-    "Python.plan_manager.executor": "Run",
-    "Python.planner.executor": "Run",
-    "Python.query.executor": "Run",
-    "Python.re_planner.executor": "Run",
-    "Python.requirements.executor": "Debug",
-    "Python.router.executor": "Debug",
-    "Python.semantic.executor": "Run",
-    "Python.split.executor": "Run",
-    "Python.structured.executor": "Run",
-    "Python.symbolic_reference.executor": "Debug",
-    "Python.sync.executor": "Run",
-    "Python.test.executor": "Debug",
-    "Python.test_tools.executor": "Run",
-    "Python.tool.executor": "Run",
-    "Python.tool_handler.executor": "Debug",
-    "Python.tool_loop.executor": "Run",
-    "Python.types.executor": "Debug",
-    "Python.vector_search.executor": "Run",
-    "Python.verify.executor": "Run",
-    "Python.verify2.executor": "Run",
-    "Python.web_ui.executor": "Run",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Shell Script.test.sh.executor": "Run",
-    "ai.playground.ignore.import.keys.banner.in.settings": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "master",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/peter/PycharmProjects/PythonProject/src/interface2/plan_then_execute_v2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.basic.executor&quot;: &quot;Run&quot;,
+    &quot;Python.basic_chat.executor&quot;: &quot;Run&quot;,
+    &quot;Python.capabilities.executor&quot;: &quot;Run&quot;,
+    &quot;Python.client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.database.executor&quot;: &quot;Run&quot;,
+    &quot;Python.decomposer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.entites.executor&quot;: &quot;Run&quot;,
+    &quot;Python.execution.executor&quot;: &quot;Run&quot;,
+    &quot;Python.executor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.extract_plan.executor&quot;: &quot;Run&quot;,
+    &quot;Python.final_answer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.get_schema.executor&quot;: &quot;Run&quot;,
+    &quot;Python.initialize.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.instant.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.middleware.executor&quot;: &quot;Run&quot;,
+    &quot;Python.models.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.ollama_gui.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ollama_qwen_llm.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.openai_client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.patch.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pipeline.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plan_manager.executor&quot;: &quot;Run&quot;,
+    &quot;Python.planner.executor&quot;: &quot;Run&quot;,
+    &quot;Python.query.executor&quot;: &quot;Run&quot;,
+    &quot;Python.re_planner.executor&quot;: &quot;Run&quot;,
+    &quot;Python.requirements.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.router.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.semantic.executor&quot;: &quot;Run&quot;,
+    &quot;Python.split.executor&quot;: &quot;Run&quot;,
+    &quot;Python.structured.executor&quot;: &quot;Run&quot;,
+    &quot;Python.symbolic_reference.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.sync.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.test_tools.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tool.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tool_handler.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.tool_loop.executor&quot;: &quot;Run&quot;,
+    &quot;Python.types.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.vector_search.executor&quot;: &quot;Run&quot;,
+    &quot;Python.verify.executor&quot;: &quot;Run&quot;,
+    &quot;Python.verify2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.web_ui.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Shell Script.test.sh.executor&quot;: &quot;Run&quot;,
+    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/peter/PycharmProjects/PythonProject/src/interface2/plan_then_execute_v2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlite"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/interface2/plan_then_execute_v2" />
@@ -248,7 +237,8 @@
       <workItem from="1769138637421" duration="3336000" />
       <workItem from="1769141985814" duration="14000" />
       <workItem from="1769194577701" duration="49000000" />
-      <workItem from="1769247626718" duration="12278000" />
+      <workItem from="1769247626718" duration="12906000" />
+      <workItem from="1769263868718" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -450,7 +440,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769243396837</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="wip">
+      <option name="closed" value="true" />
+      <created>1769262871090</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1769262871090</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
