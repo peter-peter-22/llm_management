@@ -57,7 +57,7 @@ plan_schema = """PLAN SCHEMA
 
 planner_rules = """Rules of step creation:
 - Use only known capabilities.
-- Do not guess tables, SQL and outputs."""
+- Do not guess SQL and inputs."""
 
 symbolic_reference = """SYMBOLIC REFERENCE usage: 
 - Use rows returned by the DB_QUERY as input by referring to the step id and the selected column: '@1.column_name'"""
@@ -65,6 +65,7 @@ symbolic_reference = """SYMBOLIC REFERENCE usage:
 planner_system_prompt = f"""
 You are a planner.
 Output a JSON plan by using the PLAN SCHEMA.
+Briefly think and mention what inputs are still unknown before building the JSON plan.
 
 
 {planner_rules}

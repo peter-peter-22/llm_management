@@ -26,10 +26,12 @@ task_error = """Your task:
 - ALWAYS ensure to give the necessary input arguments to the next steps."""
 
 introduction_normal = """You are re-planning.
-Output a updated JSON plan by using the PLAN SCHEMA."""
+Output a updated JSON plan by using the PLAN SCHEMA.
+Think step by step about the changes those you must implement before the JSON."""
 
 introduction_error = """You are re-planning to FIX AN ERROR.
-Output a updated JSON plan by using the PLAN SCHEMA."""
+Output a updated JSON plan by using the PLAN SCHEMA.
+Briefly think about the changes those you must implement before building the JSON."""
 
 
 def get_system_prompt(introduction: str, given: str, task: str):
